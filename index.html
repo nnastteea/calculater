@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+  <div class="calculator">
+    <div class="calc-screen">
+      <input type="text" class="calc-screen1 js-display" placeholder="0" readonly></div>
+    <div class="container">
+      <button class="btn bg1 js-button">Ac</button>
+        <button class="btn bg3 js-button">C</button>
+        <button class="btn bg4 js-button-calculate">√</button>
+        <button class="btn bg3 js-button">/</button>
+   
+        <button class="btn bg2 js-button">7</button>
+        <button class="btn bg2 js-button">8</button>
+        <button class="btn bg2 js-button">9</button>
+        <button class="btn bg3 js-button">*</button>
+        
+        <button class="btn bg2 js-button">4</button>
+        <button class="btn bg2 js-button">5</button>
+        <button class="btn bg2 js-button">6</button>
+        <button class="btn bg3 js-button">-</button>
+       
+        <button class="btn bg2 js-button">1</button>
+        <button class="btn bg2 js-button">2</button>
+        <button class="btn bg2 js-button">3</button>
+        <button class="btn bg3 js-button">+</button>
+      
+        <button class="btn zero bg2 js-button">0</button>
+        <button class="btn bg2 js-button">.</button>
+        <button class="btn bg3 js-button" id="eval">=</button>
+    </div>
+  </div>
+
+</body>
+</html>
+<script>
+const display=document.querySelector('.js-display');
+const buttonsCalculate=document.querySelectorAll('.js-button-calculate');
+const buttons=document.querySelectorAll('.js-button');
+//console.log(buttons);
+buttons.forEach((item) => {
+  item.addEventListener('click', (e) => {
+   let itemText=e.target.textContent;
+   //console.log(itemText);
+   if(itemText==="Ac"){
+   display.value=" ";
+   }
+   if(itemText==="C"){
+    display.value=display.value.slice(0,-1);
+   }
+   if(itemText!=="C" && itemText!=="Ac" && itemText!=="="){
+   display.value += itemText;}
+  if(itemText==="="){
+    display.value=eval(display.value);
+  }
+  });
+  });
+  const sqrt=()=>{
+    display.value=Math.sqrt(display.value, 2);
+  }
+
+  buttonsCalculate.forEach((item)=>{
+    item.addEventListener('click', (e) => {
+      let itemText=e.target.textContent;
+      if(itemText="√")
+      sqrt();
+    })
+  })
+</script>
